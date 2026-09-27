@@ -2,6 +2,13 @@
 
 아기 50일 사진 촬영을 위한 레퍼런스 보드와 스토리보드 사이트입니다.
 
+## 온라인 보기
+
+- 촬영 노트: https://ouog22-create.github.io/babymandoo/
+- 구도별 스토리보드: https://ouog22-create.github.io/babymandoo/storyboard.html
+
+GitHub Pages에서 바로 열 수 있습니다. 수정한 메모와 업로드한 사진은 각 브라우저에 저장되며, GitHub 저장소에는 자동으로 반영되지 않습니다.
+
 `storyboard.html`은 `ref/`의 사진 28장을 **촬영 구도 7개**로 묶은 별도 스토리보드입니다. 각 구도 오른쪽에서 필요한 소품과 촬영 가이드를 바로 수정할 수 있습니다. 수정 내용은 현재 브라우저에 자동 저장됩니다. `메모 내보내기`로 JSON을 내려받거나 `인쇄 / PDF`로 촬영용 문서를 만들 수 있습니다.
 
 ## 실행
