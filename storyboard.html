@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>50일 촬영 · 구도별 스토리보드</title>
+  <link rel="stylesheet" href="./storyboard.css">
+  <script src="./storyboard-photos.js" defer></script>
+  <script src="./storyboard.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="home" href="./index.html#storyboard">✳ 우리의 50일</a>
+    <span class="top-label">PHOTO STORYBOARD</span>
+    <div class="actions"><span id="save-status" aria-live="polite">준비됨</span><button id="export" type="button">메모 내보내기</button><button id="print" type="button">인쇄 / PDF</button></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">50 DAYS · SHOOTING PLAN</div>
+      <h1>촬영 구도별<br><em>스토리보드.</em></h1>
+      <p>레퍼런스 28장을 구도별로 모았습니다. 오른쪽의 소품과 촬영 가이드를 현장에 맞게 고쳐 쓰세요.</p>
+      <div class="hero-meta"><span><strong id="group-count">0</strong>개 구도</span><span><strong id="photo-count">28</strong>장 레퍼런스</span><span>메모 자동 저장</span></div>
+    </section>
+    <nav class="jump" id="jump" aria-label="구도 바로가기"></nav>
+    <div id="boards"></div>
+    <footer>아기의 자세와 컨디션을 먼저 확인하고, 지지 소품은 보호자가 곁에서 잡아 주세요.</footer>
+  </main>
+  <dialog id="lightbox"><button id="close-lightbox" aria-label="사진 닫기">×</button><img id="large-photo" alt=""><p id="photo-caption"></p></dialog>
+</body>
+</html>

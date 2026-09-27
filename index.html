@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f4ed" />
+    <meta name="description" content="아기의 50일을 위한 레퍼런스와 촬영 스토리보드" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e5ece4'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='42' fill='%23385748'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E" />
+    <title>우리의 50일 · 촬영 노트</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./classifier.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a href="#references" class="brand" aria-label="우리의 50일 홈">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span><strong>우리의 50일</strong><small>PHOTO PLANNING NOTE</small></span>
+        </a>
+        <div class="side-kicker">WORKSPACE</div>
+        <nav class="side-nav" aria-label="주 메뉴">
+          <a href="#references" data-nav="references"><span class="nav-icon">▦</span> 레퍼런스 <span id="nav-ref-count" class="nav-count">0</span></a>
+          <a href="#storyboard" data-nav="storyboard"><span class="nav-icon">▤</span> 촬영 스토리보드 <span id="nav-shot-count" class="nav-count">0</span></a>
+          <a href="./storyboard.html"><span class="nav-icon">▧</span> 구도별 스토리보드 <span class="nav-count">7</span></a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="little-flower" aria-hidden="true">✽</div>
+          <p>작은 순간들을<br />오래 기억할 수 있도록.</p>
+          <button class="text-button" id="open-data">데이터 관리 <span aria-hidden="true">↗</span></button>
+        </div>
+      </aside>
+
+      <div class="main-column">
+        <header class="mobile-header">
+          <a href="#references" class="mobile-brand">✳ <strong>우리의 50일</strong></a>
+          <button class="icon-button" id="mobile-data" aria-label="데이터 관리">⋯</button>
+        </header>
+        <nav class="mobile-nav" aria-label="모바일 메뉴">
+          <a href="#references" data-nav="references">레퍼런스</a>
+          <a href="#storyboard" data-nav="storyboard">스토리보드</a>
+          <a href="./storyboard.html">구도별 보기</a>
+        </nav>
+
+        <main id="main-content">
+          <section id="references-page" class="page" aria-labelledby="references-title">
+            <div class="page-heading">
+              <div><div class="eyebrow"><span class="eyebrow-line"></span> THE INSPIRATION</div><h1 id="references-title">마음에 담아둔 장면들<span class="period">.</span></h1><p class="page-subtitle">좋아하는 사진을 모으고, 우리만의 촬영 아이디어로 바꿔보세요.</p></div>
+              <button class="primary-button desktop-action" id="add-reference">＋ 레퍼런스 추가</button>
+            </div>
+            <div class="intro-banner">
+              <div class="intro-drawing" aria-hidden="true"><span class="sun"></span><span class="hill one"></span><span class="hill two"></span><span class="sparkle">✧</span></div>
+              <div><span class="banner-label">A LITTLE REMINDER</span><p>완벽한 사진보다, <em>우리 아기의 지금</em>을 담는 하루.</p><small>마음에 드는 구도와 빛을 기록해두면 촬영 당일이 한결 가벼워져요.</small></div>
+              <span class="banner-star" aria-hidden="true">✳</span>
+            </div>
+            <div class="section-toolbar">
+              <div class="section-title"><span class="section-number">01</span><h2>레퍼런스 보드</h2><span class="count-pill" id="reference-count">0</span></div>
+              <div class="filters"><label class="search-field"><span aria-hidden="true">⌕</span><input id="reference-search" type="search" placeholder="제목이나 태그 검색" aria-label="레퍼런스 검색" /></label><select id="reference-filter" aria-label="기기별 필터"><option value="all">모든 기기</option><option value="후지 카메라">후지 카메라</option><option value="핸드폰">핸드폰</option><option value="미정">미정</option></select></div>
+            </div>
+            <div id="group-toolbar" class="group-toolbar" hidden><span class="group-label">사진 분류</span><div class="group-options" role="group" aria-label="레퍼런스 분류 방식"><button type="button" data-group="all">전체</button><button type="button" data-group="similar">비슷한 사진</button><button type="button" data-group="lighting">밝기</button><button type="button" data-group="tone">색감</button><button type="button" data-group="orientation">방향</button><button type="button" data-group="customCategory">내 분류</button></div><button type="button" id="reclassify" class="reclassify-button">↻ 다시 분석</button></div>
+            <p id="classification-note" class="classification-note" hidden>자동 분류는 사진의 밝기·색·방향을 계산한 제안입니다. 구도와 소품은 레퍼런스 메모에서 직접 확인해 주세요.</p>
+            <div id="reference-list" class="reference-grid"></div>
+            <div id="reference-empty" class="empty-state" hidden><div class="empty-art" aria-hidden="true"><div class="empty-photo"><span>✳</span><i></i></div><div class="empty-photo back"></div></div><h3>첫 번째 영감을 모아볼까요?</h3><p>직접 찾은 이미지를 올리고, 구도와 빛, 소품을 기록해보세요.</p><button class="primary-button" id="empty-add-reference">＋ 레퍼런스 추가</button></div>
+            <div id="reference-no-results" class="no-results" hidden>조건에 맞는 레퍼런스가 없어요.</div>
+          </section>
+
+          <section id="storyboard-page" class="page" aria-labelledby="storyboard-title" hidden>
+            <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE SHOOTING PLAN</div><h1 id="storyboard-title">우리의 촬영 이야기<span class="period">.</span></h1><p class="page-subtitle">한 장면씩 차근차근, 소중한 50일을 기록해요.</p></div><button class="primary-button desktop-action" id="add-shot">＋ 촬영 컷 추가</button></div>
+            <div class="stats-row"><div class="stat-card"><span>전체 촬영 컷</span><strong id="stat-total">0<small>컷</small></strong></div><div class="stat-card"><span>꼭 찍을 컷</span><strong id="stat-must">0<small>컷</small></strong></div><div class="stat-card"><span>예상 촬영 시간</span><strong id="stat-duration">0<small>분</small></strong></div><div class="stat-card progress-card"><span>촬영 진행률</span><strong id="stat-progress">0<small>%</small></strong><div class="progress-track"><div id="progress-fill"></div></div></div></div>
+            <div class="section-toolbar story-toolbar"><div class="section-title"><span class="section-number">02</span><h2>촬영 순서</h2><span class="count-pill" id="shot-count">0</span></div><div class="view-controls"><button class="tool-button" id="open-checklist">☑ 준비물 <span id="needed-count"></span></button><button class="tool-button" id="toggle-focus">▣ 촬영 모드</button></div></div>
+            <div id="shot-list" class="shot-list"></div>
+            <div id="shot-empty" class="empty-state" hidden><div class="empty-art storyboard-art" aria-hidden="true"><div class="empty-photo"><span>50</span><i></i></div><div class="empty-photo back"></div></div><h3>첫 촬영 컷을 계획해볼까요?</h3><p>레퍼런스를 연결하고 촬영 순서와 준비물을 정해보세요.</p><button class="primary-button" id="empty-add-shot">＋ 촬영 컷 추가</button></div>
+            <div id="focus-view" class="focus-view" hidden></div>
+          </section>
+        </main>
+        <footer class="app-footer"><span>✳ 우리의 50일</span><span>이 브라우저에 저장되는 나만의 촬영 노트</span></footer>
+      </div>
+      <button class="floating-add" id="mobile-add" aria-label="추가">＋</button>
+    </div>
+
+    <dialog id="editor-dialog" class="modal"><form id="editor-form" method="dialog" novalidate><div class="modal-head"><div><span class="modal-kicker" id="editor-kicker"></span><h2 id="editor-title"></h2></div><button class="close-button" type="button" data-close aria-label="닫기">×</button></div><div id="editor-body" class="modal-body"></div><div class="modal-actions"><button type="button" class="ghost-button" data-close>취소</button><button type="submit" class="primary-button" id="editor-save">저장하기</button></div></form></dialog>
+    <dialog id="detail-dialog" class="modal detail-modal"><div class="modal-head"><div><span class="modal-kicker">REFERENCE NOTE</span><h2 id="detail-title"></h2></div><button class="close-button" type="button" data-close aria-label="닫기">×</button></div><div id="detail-body" class="modal-body"></div><div class="modal-actions"><button type="button" class="danger-button" id="detail-delete">삭제</button><span class="spacer"></span><button type="button" class="ghost-button" data-close>닫기</button><button type="button" class="primary-button" id="detail-edit">편집하기</button></div></dialog>
+    <dialog id="checklist-dialog" class="modal small-modal"><div class="modal-head"><div><span class="modal-kicker">SHOOTING PREP</span><h2>준비물 체크리스트</h2></div><button class="close-button" type="button" data-close aria-label="닫기">×</button></div><div id="checklist-body" class="modal-body"></div><div class="modal-actions"><button type="button" class="primary-button" data-close>확인</button></div></dialog>
+    <dialog id="data-dialog" class="modal small-modal"><div class="modal-head"><div><span class="modal-kicker">YOUR DATA</span><h2>데이터 관리</h2></div><button class="close-button" type="button" data-close aria-label="닫기">×</button></div><div class="modal-body"><p class="data-note">사진과 기록은 이 브라우저에 저장됩니다. 다른 기기에서 이어 쓰려면 백업 파일을 내보낸 뒤 가져오세요.</p><button class="data-action" id="export-data"><span>↓</span><span><strong>백업 파일 내보내기</strong><small>이미지와 기록을 JSON 파일로 저장</small></span></button><button class="data-action" id="import-data"><span>↑</span><span><strong>백업 파일 가져오기</strong><small>현재 데이터를 백업 파일로 교체</small></span></button><input type="file" id="import-file" accept="application/json,.json" hidden /><p class="data-footnote">공용 기기라면 브라우저 데이터 관리에 주의하세요. 브라우저 데이터를 삭제하면 이 노트도 사라질 수 있습니다.</p></div></dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
